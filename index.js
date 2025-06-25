@@ -19,9 +19,24 @@ var arrayOfQoutes = [
     },
 ];
 
+var usedQuotes = [];
 var cartona = "";
 function randomQuotes(){
+    if(usedQuotes.length === arrayOfQoutes.length){
+        usedQuotes = [];
+    }
+
+    do{
         var num = Math.floor(Math.random() * arrayOfQoutes.length);
+        if(!usedQuotes.includes(num)){
+                return num;
+        }
+    }while(true)
+}
+
+function displayQuote(){
+        var num = randomQuotes();
+        usedQuotes.push(num);
         cartona = `
         <p>${arrayOfQoutes[num].quote}</p>
         <p>${arrayOfQoutes[num].author}</p>
